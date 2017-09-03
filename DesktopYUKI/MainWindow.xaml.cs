@@ -59,6 +59,7 @@ namespace DesktopYUKI {
 
         // 掴める機能の追加
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e) {
+
             base.OnMouseLeftButtonDown(e);
             DragMove();
         }

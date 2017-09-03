@@ -5,7 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopYUKI"
         mc:Ignorable="d"
-        Title="ChatWindow" Height="300" Width="300">
+        Title="ChatWindow" Height="138" Width="210"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStyle="None"
+>
     <Grid>
         <TextBlock x:Name="ChatField"
                    HorizontalAlignment="Left"
