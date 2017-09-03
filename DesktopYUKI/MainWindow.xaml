@@ -17,6 +17,6 @@
         </ContextMenu>
     </Window.ContextMenu>
     <Grid>
-        <Image Source="He.png" />
+        <Image Source=".\pict\He.png" />
     </Grid>
 </Window>
