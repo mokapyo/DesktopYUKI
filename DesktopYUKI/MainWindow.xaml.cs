@@ -73,14 +73,14 @@ namespace DesktopYUKI {
         // 掴める機能の追加
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e) {
             base.OnMouseLeftButtonDown(e);
-            DragMove();
 			timer.Stop();
 			m_MainImage = new BitmapImage();
 			m_MainImage.BeginInit();
 			m_MainImage.UriSource = new Uri("/pict/Drag.png", UriKind.Relative);
 			m_MainImage.EndInit();
 			MainImage.Source = m_MainImage;
-		}
+            DragMove();
+        }
 
 		protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
 		{
