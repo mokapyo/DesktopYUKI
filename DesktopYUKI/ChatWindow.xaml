@@ -6,8 +6,6 @@
         xmlns:local="clr-namespace:DesktopYUKI"
         mc:Ignorable="d"
         Title="ChatWindow" Height="138" Width="210"
-        AllowsTransparency="True"
-        Background="Transparent"
         WindowStyle="None"
 >
     <Grid>

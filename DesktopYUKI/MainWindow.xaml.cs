@@ -17,9 +17,7 @@ using System.Windows.Threading;
 using System.Drawing;
 
 namespace DesktopYUKI {
-    /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
-    /// </summary>
+
     public partial class MainWindow : Window {
 		BitmapImage m_MainImage = null;
 
@@ -30,34 +28,32 @@ namespace DesktopYUKI {
             chatwindow.Show();
 
             timer = new DispatcherTimer();
-            timer.Interval = TimeSpan.FromSeconds(5.0);
+            timer.Interval = TimeSpan.FromSeconds(3.0);
             timer.Tick += timer_Tick;
             timer.Start();
         }
         DispatcherTimer timer;
         ChatWindow chatwindow;
 
+		// 通常時は踊らせておく
         int count = 0;
         void timer_Tick(object sender, EventArgs e) {
             count++;
-            if (count == 1) {
-				m_MainImage = new BitmapImage();
-				m_MainImage.BeginInit();
+			m_MainImage = new BitmapImage();
+			m_MainImage.BeginInit();
+			if (count == 1) {
 				m_MainImage.UriSource = new Uri("/pict/He.png", UriKind.Relative);
-				m_MainImage.EndInit();
-				MainImage.Source = m_MainImage;
 				chatwindow.DisplayMessage("ぬるぽ");
             } else {
                 count = 0;
-				m_MainImage = new BitmapImage();
-				m_MainImage.BeginInit();
 				m_MainImage.UriSource = new Uri("/pict/He2.png", UriKind.Relative);
-				m_MainImage.EndInit();
-				MainImage.Source = m_MainImage;
 				chatwindow.DisplayMessage("ガッ！！");
             }
-        }
+			m_MainImage.EndInit();
+			MainImage.Source = m_MainImage;
+		}
 
+		// 終了時処理
         protected override void OnClosing(CancelEventArgs e) {
             base.OnClosing(e);
             if(chatwindow != null) {
@@ -72,7 +68,8 @@ namespace DesktopYUKI {
 
         // 掴める機能の追加
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e) {
-            base.OnMouseLeftButtonDown(e);
+			chatwindow.Hide();
+			base.OnMouseLeftButtonDown(e);
 			timer.Stop();
 			m_MainImage = new BitmapImage();
 			m_MainImage.BeginInit();
@@ -84,6 +81,7 @@ namespace DesktopYUKI {
 
 		protected override void OnMouseLeftButtonUp(MouseButtonEventArgs e)
 		{
+			chatwindow.Show();
 			base.OnMouseLeftButtonUp(e);
 			timer.Start();
 			m_MainImage = new BitmapImage();
